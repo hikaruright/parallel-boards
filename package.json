@@ -5,6 +5,10 @@
     "backend",
     "frontend"
   ],
+  "scripts": {
+    "start:backend": "npm run start --workspace=backend",
+    "start:frontend": "npm run start --workspace=frontend"
+  },
   "dependencies": {
     "dotenv": "^16.4.5"
   },

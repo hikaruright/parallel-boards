@@ -34,5 +34,5 @@ export class Task {
   Process!: Process;
 
   @ManyToOne(() => User, (user) => user.Tasks, { nullable: true })
-  User: User | undefined;
+  User?: User;
 }

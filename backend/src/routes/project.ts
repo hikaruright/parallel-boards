@@ -1,24 +1,18 @@
 import { Router } from "express";
-import { AppDataSource } from "../index";
+import { AppDataSource } from "../data-source";
 import { Project } from "../entity/Project";
 
 const router = Router();
 
-// プロジェクト一覧の取得
 router.get("/", async (req, res) => {
-  const projectRepository = AppDataSource.getRepository(Project);
-  const projects = await projectRepository.find();
+  const projects = await AppDataSource.getRepository(Project).find();
   res.json(projects);
 });
 
-// プロジェクトの作成
 router.post("/", async (req, res) => {
-  const projectRepository = AppDataSource.getRepository(Project);
-  const newProject = projectRepository.create(req.body);
-  const result = await projectRepository.save(newProject);
+  const project = AppDataSource.getRepository(Project).create(req.body);
+  const result = await AppDataSource.getRepository(Project).save(project);
   res.status(201).json(result);
 });
 
-// 他のCRUD操作も同様に追加
-
-module.exports = router;
+export default router;

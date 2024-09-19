@@ -37,5 +37,5 @@ export class Process {
   Project!: Project;
 
   @OneToMany(() => Task, (task) => task.Process)
-  Tasks!: Relation<Task[]>;
+  Tasks!: Task[];
 }
