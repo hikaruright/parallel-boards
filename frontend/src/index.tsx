@@ -1,15 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { SWRConfig } from "swr";
+import fetcher from "./api/fetcher";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <SWRConfig
+      value={{
+        fetcher,
+        dedupingInterval: 2000, // データの重複取得を防ぐ間隔（ミリ秒）
+        // 他の設定オプション
+      }}
+    >
+      <App />
+    </SWRConfig>
   </React.StrictMode>
 );
 

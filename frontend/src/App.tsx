@@ -1,5 +1,8 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+// src/App.tsx
+
+import React from "react";
+import useSWR from "swr";
+import fetcher from "./api/fetcher";
 
 interface Project {
   ProjectID: number;
@@ -11,18 +14,10 @@ interface Project {
 }
 
 const App: React.FC = () => {
-  const [projects, setProjects] = useState<Project[]>([]);
+  const { data: projects, error } = useSWR<Project[]>("/projects", fetcher);
 
-  useEffect(() => {
-    axios
-      .get<Project[]>("/api/projects")
-      .then((response) => {
-        setProjects(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching projects:", error);
-      });
-  }, []);
+  if (error) return <div>データの取得中にエラーが発生しました</div>;
+  if (!projects) return <div>読み込み中...</div>;
 
   return (
     <div>
