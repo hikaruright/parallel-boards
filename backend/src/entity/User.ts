@@ -12,14 +12,14 @@ export class User {
   Name!: string;
 
   @Column({ nullable: true })
-  Department: string | undefined;
+  Department?: string;
 
   @Column({ nullable: true })
-  Position: string | undefined;
+  Position?: string;
 
   @Column({ nullable: true })
-  ContactInfo: string | undefined;
+  ContactInfo?: string;
 
   @OneToMany(() => Task, (task) => task.User)
-  Tasks: Task[] | undefined;
+  Tasks?: Task[];
 }

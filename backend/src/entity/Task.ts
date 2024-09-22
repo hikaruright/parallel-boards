@@ -16,16 +16,16 @@ export class Task {
   Description!: string;
 
   @Column({ type: "decimal", nullable: true })
-  EstimatedHours: number | undefined;
+  EstimatedHours?: number;
 
   @Column({ type: "decimal", nullable: true })
-  ActualHours: number | undefined;
+  ActualHours?: number;
 
   @Column({ type: "date", nullable: true })
-  StartDate: Date | undefined;
+  StartDate?: Date;
 
   @Column({ type: "date", nullable: true })
-  EndDate: Date | undefined;
+  EndDate?: Date;
 
   @Column({ nullable: true })
   Status!: string;

@@ -10,17 +10,17 @@ export class Project {
   ProjectName!: string;
 
   @Column({ type: "text", nullable: true })
-  Description: string | undefined;
+  Description?: string;
 
   @Column({ type: "date", nullable: true })
-  StartDate: Date | undefined;
+  StartDate?: Date;
 
   @Column({ type: "date", nullable: true })
-  EndDate: Date | undefined;
+  EndDate?: Date;
 
   @Column({ nullable: true })
-  Status: string | undefined;
+  Status?: string;
 
   @OneToMany(() => Process, (process) => process.Project)
-  Processes: Process[] | undefined;
+  Processes?: Process[];
 }

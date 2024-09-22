@@ -25,10 +25,10 @@ export class Process {
   EstimatedHours!: number;
 
   @Column({ type: "date", nullable: true })
-  StartDate: Date | undefined;
+  StartDate?: Date;
 
   @Column({ type: "date", nullable: true })
-  EndDate: Date | undefined;
+  EndDate?: Date;
 
   @Column({ nullable: true })
   Status!: string;
